@@ -1,14 +1,8 @@
-def main():
+from my_app.models import Bookings
+
+
+def get_customer():
+    cust = Bookings.query.filter_by(erp_end_customer_name='Clarivate Analytics').first()
+    print(cust.erp_end_customer_name)
     print('Hello from main.py')
-    return
-
-DS-2CD2342WD-I newer
-DS-2CD2332-I
-DS-2CD2332-I
-
-import sys
-path = '/home/jpisano/ta_adoption_r2/'
-if path not in sys.path:
-    sys.path.append(path)
-
-from ta_adoption import app as application  # noqa
+    return cust.erp_end_customer_name

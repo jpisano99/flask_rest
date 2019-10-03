@@ -2,8 +2,8 @@ from my_app.my_secrets import passwords
 import os
 
 # database configuration settings
-database = dict(
-    DATABASE="cust_ref_db",
+db_config = dict(
+    DATABASE="ta_customer_db",
     USER="root",
     PASSWORD=passwords["DB_PASSWORD"],
     HOST="localhost"

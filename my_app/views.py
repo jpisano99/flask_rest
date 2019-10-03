@@ -1,15 +1,18 @@
 from my_app import app
-from my_app.main import main
+from my_app.main import get_customer
 from my_app.settings import app_cfg
 from flask import render_template, url_for, request, jsonify
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    cust_name = get_customer()
     if request.method == 'POST':
-        main()
         some_json = request.get_json()
-        return jsonify({'about': 'POSTED Version 2.0'}), 202
+        print('type', type(some_json))
+        print('json:', some_json)
+        type_of_url = 'POSTED Version 2.0'
     else:
-        return jsonify({'about': 'GET Version 1.0'})
-    r# eturn render_template('index.html')
+        type_of_url = 'GET Version 1.0 ' + cust_name
+    # return jsonify({'about': type_of_url}), 201
+    return render_template('index.html', type_of_url=type_of_url, cust_name=cust_name)
