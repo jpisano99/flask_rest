@@ -1,8 +1,9 @@
-from my_app.models import Bookings
+from my_app.models import Customers
 
 
 def get_customer():
-    cust = Bookings.query.filter_by(erp_end_customer_name='Clarivate Analytics').first()
-    print(cust.erp_end_customer_name)
+    cust = Customers.query.filter_by(first_name='Jim').first()
+    print(cust.first_name)
     print('Hello from main.py')
-    return cust.erp_end_customer_name
+    # return ('Hello')
+    return cust.first_name

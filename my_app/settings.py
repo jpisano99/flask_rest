@@ -2,12 +2,22 @@ from my_app.my_secrets import passwords
 import os
 
 # database configuration settings
+# This is for pythonAnywhere
+# db_config = dict(
+#     DATABASE="jpisano$ta_adoption_db",
+#     USER="jpisano",
+#     PASSWORD=passwords["DB_PASSWORD"],
+#     HOST="jpisano.mysql.pythonanywhere-services.com"
+# )
+
 db_config = dict(
     DATABASE="ta_customer_db",
     USER="root",
     PASSWORD=passwords["DB_PASSWORD"],
     HOST="localhost"
 )
+
+
 
 # Smart sheet Config settings
 ss_token = dict(
@@ -26,6 +36,3 @@ app_cfg = dict(
     UPDATE_DATE='',
     META_DATA_FILE='config_data.json',
 )
-
-
-

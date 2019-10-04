@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+#import MySQLdb
 from flask_sqlalchemy import SQLAlchemy
 from my_app.settings import app_cfg, db_config
 from base64 import b64encode
@@ -21,23 +22,23 @@ print("I have an Flask Secret Key: ", app.config['SECRET_KEY'])
 print()
 
 #
-# database configuration settings
+# database connection settings
 #
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' +\
                                             db_config['USER'] +\
                                         ':'+db_config['PASSWORD'] +\
                                         '@'+db_config['HOST']+':3306/' +\
                                             db_config['DATABASE']
 
+# This is for pythonAnywhere it requires "import MySQLdb"
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://' +\
+#                                             db_config['USER'] +\
+#                                         ':'+db_config['PASSWORD'] +\
+#                                         '@'+db_config['HOST']+'/' +\
+#                                             db_config['DATABASE']
 
-
-
-SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-    username="<the username from the 'Databases' tab>",
-    password="<the password you set on the 'Databases' tab>",
-    hostname="<the database host address from the 'Databases' tab>",
-    databasename="<the database name you chose, probably yourusername$comments>",
+app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
 #
