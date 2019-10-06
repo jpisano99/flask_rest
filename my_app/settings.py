@@ -2,22 +2,22 @@ from my_app.my_secrets import passwords
 import os
 
 # database configuration settings
-# This is for pythonAnywhere
-# db_config = dict(
-#     DATABASE="jpisano$ta_adoption_db",
-#     USER="jpisano",
-#     PASSWORD=passwords["DB_PASSWORD"],
-#     HOST="jpisano.mysql.pythonanywhere-services.com"
-# )
-
-db_config = dict(
-    DATABASE="ta_customer_db",
-    USER="root",
-    PASSWORD=passwords["DB_PASSWORD"],
-    HOST="localhost"
-)
-
-
+if os.getenv("PYTHONANYWHERE_DOMAIN") is None:
+    # This is for a local SQL db
+    db_config = dict(
+        DATABASE="ta_customer_db",
+        USER="root",
+        PASSWORD=passwords["DB_PASSWORD"],
+        HOST="localhost"
+    )
+else:
+    # This is for pythonAnywhere
+    db_config = dict(
+        DATABASE="jpisano$ta_adoption_db",
+        USER="jpisano",
+        PASSWORD=passwords["DB_PASSWORD"],
+        HOST="jpisano.mysql.pythonanywhere-services.com"
+    )
 
 # Smart sheet Config settings
 ss_token = dict(
