@@ -43,12 +43,12 @@ else:
                                             ':'+db_config['PASSWORD'] +\
                                             '@'+db_config['HOST']
 
-print(app.config['SQLALCHEMY_DATABASE_URI'])
-# Create a schema (ie database) if one does not exist
+print('\t\tDatabase Connection String:', app.config['SQLALCHEMY_DATABASE_URI'])
+
+# Create an engine and connect to the engine / server
 engine = sqlalchemy.create_engine(app.config['SQLALCHEMY_DATABASE_URI'])  # connect to server
 
-# engine.execute("CREATE SCHEMA IF NOT EXISTS `" + "dev" + "`;")  # create db
-# engine.execute("CREATE SCHEMA IF NOT EXISTS `" + "test" + "`;")  # create db
+# Create DEFAULT Database from the Settings file
 engine.execute("CREATE SCHEMA IF NOT EXISTS `" + db_config['DATABASE'] + "`;")  # create db
 engine.execute("USE " + db_config['DATABASE'] + ";")  # select new db
 

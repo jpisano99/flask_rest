@@ -5,7 +5,7 @@ import os
 if os.getenv("PYTHONANYWHERE_DOMAIN") is None:
     # This is for a local SQL db
     db_config = dict(
-        DATABASE="ta_customer_db",
+        DATABASE="test_db",
         USER="root",
         PASSWORD=passwords["DB_PASSWORD"],
         HOST="localhost"

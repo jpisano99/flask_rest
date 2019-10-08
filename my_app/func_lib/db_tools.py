@@ -1,5 +1,5 @@
-from my_app import db
 from my_app.models import *
+from my_app.settings import db_config
 
 
 def create_tables(tbl_name='all'):
@@ -56,18 +56,46 @@ def table_exist(tbl_name):
     return tbl_exists
 
 
-# def create_schema():
-#     engine = sqlalchemy.create_engine('mysql://root:password@localhost')  # connect to server
-#     engine.execute("CREATE SCHEMA IF NOT EXISTS `testdb`;")  # create db
-#     engine.execute("USE testdb;")  # select new db
-#
-#     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:8milerun@localhost/testdb'
-#     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Turn off annoying message
-#     db = SQLAlchemy(app)
-#     return
+def get_db():
+    sql = "SELECT DATABASE();"
+    result = db.engine.execute(sql)
+    for x in result:
+        print('Currently Selected DB:', x[0])
+    return x[0]
 
 
+def switch_db(select_db):
+    db.engine.execute(jim)
+    sql = "SELECT DATABASE();"
+    result = db.engine.execute(sql)
+    for x in result:
+        print('Currently Selected DB:', x[0])
 
+    sql = "USE " + select_db + ";"
+
+    db.engine.execute(sql)
+    for x in result:
+        print(x[0])
+
+    sql = "SELECT DATABASE();"
+    result = db.engine.execute(sql)
+    for x in result:
+        print(x[0])
+    print('Now Selected DB:', x[0])
+    return
+
+
+def create_db(db_name):
+    db.engine.execute("CREATE SCHEMA IF NOT EXISTS " + db_name + ";")  # create db
+    db.engine.execute("USE " + db_name + ";")  # select new db
+    return
+
+
+def drop_db(db_name):
+    # Drop db_name and connect to the default DB
+    db.engine.execute("DROP SCHEMA IF EXISTS " + db_name + ";")  # create db
+    # db.engine.execute("USE " + db_config['DATABASE'] + ";")  # select new db
+    return
 
 # def createdb():
 #     #create_database('mysql+pymysql://root:YOUR_PASSWORD@aay9qgi0q2ps45.cp1kaaiuayns.us-east-1.rds.amazonaws.com/cust_ref_db')
