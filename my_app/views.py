@@ -6,6 +6,7 @@ from flask import render_template, url_for, request, jsonify
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    # Go run this script when this route is called
     cust_name = get_customer()
     if request.method == 'POST':
         some_json = request.get_json()

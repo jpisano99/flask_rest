@@ -3,7 +3,11 @@ from my_app import db
 
 class Test_Table(db.Model):
     __tablename__ = 'test_table'
-    # __table_args__ = {'schema': 'test'}
+
+    # Use this to specify a default schema/db for this table
+    # __table_args__ = {'schema': 'dev'}
+
+    # Us this to specify a different bind/sql server for this table
     # __bind_key__ = 'dev'
 
     id = db.Column(db.Integer(), primary_key=True)
@@ -25,14 +29,14 @@ class Test_Table(db.Model):
        return "<name {}: '{} , {}'>".format(self.id, self.pss_name,self.tsa_name)
 
 
-class Bookings(db.Model):
-    __tablename__ = 'bookings'
-
-    erp_end_customer_name = db.Column(db.String(100))
-    total_bookings = db.Column(db.Float)
-    product_id = db.Column(db.String(25))
-    date_added = db.Column(db.DateTime)
-    hash_value = db.Column(db.String(50), primary_key=True)
+# class Bookings(db.Model):
+#     __tablename__ = 'bookings'
+#
+#     erp_end_customer_name = db.Column(db.String(100))
+#     total_bookings = db.Column(db.Float)
+#     product_id = db.Column(db.String(25))
+#     date_added = db.Column(db.DateTime)
+#     hash_value = db.Column(db.String(50), primary_key=True)
 
 
 # class Customers(db.Model):

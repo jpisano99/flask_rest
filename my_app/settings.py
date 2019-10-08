@@ -13,7 +13,7 @@ if os.getenv("PYTHONANYWHERE_DOMAIN") is None:
 else:
     # This is for pythonAnywhere
     db_config = dict(
-        DATABASE="jpisano$ta_adoption_db",
+        DATABASE="jpisano$test_db",
         USER="jpisano",
         PASSWORD=passwords["DB_PASSWORD"],
         HOST="jpisano.mysql.pythonanywhere-services.com"
