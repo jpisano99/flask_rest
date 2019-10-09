@@ -65,7 +65,6 @@ def get_db():
 
 
 def switch_db(select_db):
-    db.engine.execute(jim)
     sql = "SELECT DATABASE();"
     result = db.engine.execute(sql)
     for x in result:

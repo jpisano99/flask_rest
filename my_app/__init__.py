@@ -13,35 +13,21 @@ token = os.urandom(64)
 token = b64encode(token).decode('utf-8')
 app.config['SECRET_KEY'] = token
 
-# Where am I ?
-if os.getenv("PYTHONANYWHERE_DOMAIN") is None:
-    python_anywhere = False
-else:
-    python_anywhere = True
-
 # Get the Passwords and Keys
 print()
 print("\tI have a DB Password: ", my_secrets.passwords["DB_PASSWORD"])
-print("\tI have an API Key: ", my_secrets.passwords["SS_TOKEN"])
+print("\tI have an SmartSheet API Key: ", my_secrets.passwords["SS_TOKEN"])
 print("\tI have an Flask Secret Key: ", app.config['SECRET_KEY'])
-print("\tPythonAnywhere detection is:", python_anywhere)
+print("\tRuntime Environment is:", app_cfg['RUNTIME_ENV'])
 print()
 
 #
 # database connection settings
 #
-if python_anywhere is True:
-    # This is for a local SQL Server
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://' +\
-                                                db_config['USER'] +\
-                                            ':'+db_config['PASSWORD'] +\
-                                            '@'+db_config['HOST']+':3306'
-else:
-    # This is for pythonAnywhere it requires "import MySQLdb"
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://' +\
-                                                db_config['USER'] +\
-                                            ':'+db_config['PASSWORD'] +\
-                                            '@'+db_config['HOST']
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://' +\
+                                            db_config['USER'] +\
+                                        ':'+db_config['PASSWORD'] +\
+                                        '@'+db_config['HOST']+':3306'
 
 print('\t\tDatabase Connection String:', app.config['SQLALCHEMY_DATABASE_URI'])
 
@@ -65,7 +51,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # # Create db for SQL Alchemy
 db = SQLAlchemy(app)
 
-# Are we connected ?
+# Are we connected if so How & Where ?
 db_host = []
 db_port = []
 db_user = []
