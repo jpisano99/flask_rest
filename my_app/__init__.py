@@ -3,6 +3,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import sqlalchemy
 from my_app.settings import app_cfg, db_config
+from my_app.check_dir_tree import check_dir_tree
 from base64 import b64encode
 from my_app.my_secrets import passwords
 
@@ -20,6 +21,12 @@ print("\tI have an SmartSheet API Key: ", my_secrets.passwords["SS_TOKEN"])
 print("\tI have an Flask Secret Key: ", app.config['SECRET_KEY'])
 print("\tRuntime Environment is:", app_cfg['RUNTIME_ENV'])
 print()
+
+
+#
+# Check and Build Directory Tree as needed
+#
+check_dir_tree()
 
 #
 # database connection settings
