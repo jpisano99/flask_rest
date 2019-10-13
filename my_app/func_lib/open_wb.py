@@ -4,11 +4,12 @@ from my_app.settings import app_cfg
 
 
 def open_wb(excel_file, run_dir=app_cfg['UPDATES_SUB_DIR']):
-    home = app_cfg['HOME']
-    working_dir = app_cfg['WORKING_DIR']
-    path_to_run_dir = (os.path.join(home, working_dir, run_dir))
+    path_to_my_app = os.path.join(app_cfg['HOME'], app_cfg['MOUNT_POINT'], app_cfg['MY_APP_DIR'])
+    path_to_run_dir = (os.path.join(path_to_my_app, run_dir))
     path_to_file = os.path.join(path_to_run_dir, excel_file)
-    print('OPENING>>>>>>>>>> ', path_to_file)
+    print()
+    print('OPENING >>>>>>>>>> ', path_to_file)
+    print()
 
     #
     # Open up excel workbook

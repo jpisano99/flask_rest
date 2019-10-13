@@ -7,7 +7,8 @@ from my_app.check_dir_tree import check_dir_tree
 from base64 import b64encode
 from my_app.my_secrets import passwords
 
-app = Flask(__name__)
+application = app = Flask(__name__)
+
 
 # Assign App Config Variables / Create a random token for Flask Session
 token = os.urandom(64)

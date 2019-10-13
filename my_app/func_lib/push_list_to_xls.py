@@ -5,10 +5,13 @@ from my_app.settings import app_cfg
 
 
 def push_list_to_xls(my_list, excel_file, run_dir=app_cfg['UPDATES_SUB_DIR'], tbl_name='table1'):
-    home = app_cfg['HOME']
-    working_dir = app_cfg['WORKING_DIR']
-    path_to_run_dir = (os.path.join(home, working_dir, run_dir, excel_file))
-    print('CREATING>>>>>>>>>> ', path_to_run_dir)
+    path_to_my_app = os.path.join(app_cfg['HOME'], app_cfg['MOUNT_POINT'], app_cfg['MY_APP_DIR'])
+    path_to_run_dir = (os.path.join(path_to_my_app, run_dir))
+    path_to_file = os.path.join(path_to_run_dir, excel_file)
+    print()
+    print('CREATING IN DIRECTORY >>>>>>>>>> ', path_to_run_dir)
+    print('CREATING SHEET >>>>>>>>>> ', excel_file)
+    print()
 
     # def push_list_to_xls(my_list, xls_file, xls_time=app_cfg['PROD_DATE']):
     #
@@ -18,7 +21,7 @@ def push_list_to_xls(my_list, excel_file, run_dir=app_cfg['UPDATES_SUB_DIR'], tb
     #
     # Write the Excel File
     #
-    workbook = xlsxwriter.Workbook(path_to_run_dir)
+    workbook = xlsxwriter.Workbook(path_to_file)
     worksheet = workbook.add_worksheet()
 
     # cell_format = workbook.add_format()
