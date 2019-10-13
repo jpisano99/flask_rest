@@ -10,7 +10,7 @@ def check_dir_tree():
     print('\tAPPLICATION DIRECTORY:', app_cfg['MY_APP_DIR'])
     print('\tWORKING SUB DIRECTORY:', app_cfg['WORKING_SUB_DIR'])
     print('\tUPDATES SUB DIRECTORY:', app_cfg['UPDATES_SUB_DIR'])
-    print('\tARCHIVES SUB DIRECTORY:', app_cfg['ARCHIVES__SUB_DIR'])
+    print('\tARCHIVES SUB DIRECTORY:', app_cfg['ARCHIVES_SUB_DIR'])
     print()
     print('\tDirectories in my HOME Dir', os.listdir(app_cfg["HOME"]))
     print()
@@ -26,7 +26,7 @@ def check_dir_tree():
     do_it(path_to_check)
     path_to_check = os.path.join(path_to_main_app, app_cfg['UPDATES_SUB_DIR'])
     do_it(path_to_check)
-    path_to_check = os.path.join(path_to_main_app, app_cfg['ARCHIVES__SUB_DIR'])
+    path_to_check = os.path.join(path_to_main_app, app_cfg['ARCHIVES_SUB_DIR'])
     do_it(path_to_check)
     return
 
