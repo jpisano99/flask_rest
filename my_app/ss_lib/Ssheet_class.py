@@ -11,7 +11,6 @@ class Ssheet:
     ss_token = ss_config['SS_TOKEN']
     ss = smartsheet.Smartsheet(ss_token)
 
-
     def __init__(self, name, meta_data_only=False):
         self.name = name
         self.sheet = {}

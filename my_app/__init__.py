@@ -9,7 +9,6 @@ from my_app.my_secrets import passwords
 
 application = app = Flask(__name__)
 
-
 # Assign App Config Variables / Create a random token for Flask Session
 token = os.urandom(64)
 token = b64encode(token).decode('utf-8')
@@ -22,7 +21,6 @@ print("\tI have an SmartSheet API Key: ", my_secrets.passwords["SS_TOKEN"])
 print("\tI have an Flask Secret Key: ", app.config['SECRET_KEY'])
 print("\tRuntime Environment is:", app_cfg['RUNTIME_ENV'])
 print()
-
 
 #
 # Check and Build Directory Tree as needed
@@ -46,7 +44,7 @@ engine = sqlalchemy.create_engine(app.config['SQLALCHEMY_DATABASE_URI'])  # conn
 engine.execute("CREATE SCHEMA IF NOT EXISTS `" + db_config['DATABASE'] + "`;")  # create db
 engine.execute("USE " + db_config['DATABASE'] + ";")  # select new db
 
-# Update the URI and attach the schema
+# Update the URI and attach the schema for multiple URI databases
 # app.config['SQLALCHEMY_BINDS']= {
 #     'dev':        'mysqldb://localhost/users',
 #     'prod':       'sqlite:////path/to/appmeta.db'

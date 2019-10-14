@@ -1,4 +1,4 @@
-from my_app.func_lib.db_tools import create_tables, drop_tables, table_exist
+from my_app.func_lib.db_tools import create_tables
 from my_app.func_lib.get_list_from_ss import get_list_from_ss
 from my_app.func_lib.open_wb  import open_wb
 from my_app.func_lib.push_list_to_xls import push_list_to_xls
