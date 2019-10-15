@@ -16,5 +16,5 @@ def index():
     else:
         type_of_url = 'GET Version 1.0 ' + cust_name
     # return jsonify({'about': type_of_url}), 201
-    return render_template('login.html')
+    return render_template('login.html', cust_name=cust_name)
     # return render_template('index.html', type_of_url=type_of_url, cust_name=cust_name)

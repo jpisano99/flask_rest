@@ -20,5 +20,4 @@ def get_customer():
 
     # Try opening an xlsx file from local storage
     xws, wb = open_wb('my_test_sheet.xlsx')
-    return ('Hello')
-    # return cust.first_name
+    return 'Hello from Main.py: I read: '+ str(len(ss_test_list)) + ' rows from SmartSheets'
